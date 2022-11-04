@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="tabor" action="/rekapitulace" method="post">
+    <form class="tabor" action="" method="post">
         <h1>Přihláška na tábor</h1>
 
         <label for="jmeno" class="radek">Jméno:</label>
@@ -38,8 +38,8 @@
         <div class="radek">Turnus:</div>
         <div class="skupina">
             <div>
-                <input readonly id="turnus1" type="radio" name="turnus" value="turnus1"/>
-                <label for="turnus1">5.-11. července</label>
+                <input readonly id="turnus1" type="radio" name="turnus" value="turnus1" />
+                <label for="turnus1" >5.-11. července</label>
             </div>
             <div>
                 <input readonly id="turnus2" type="radio" name="turnus" value="turnus2"/>
@@ -50,7 +50,7 @@
                 <label for="turnus3">19.-25. července</label>
             </div>
         </div>
-        [@spring.bind "form.turnus"/]
+        [@spring.bind "form.turnus" /]
         <div class="error">[@spring.showErrors "<br>"/]</div>
 
 

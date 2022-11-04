@@ -15,25 +15,26 @@ import java.util.Random;
  */
 @Controller
 public class RegistraceController {
-   Random random= new Random();
+    Random random = new Random();
 
-  @GetMapping("/")
-  public ModelAndView form() {
-    ModelAndView formular = new ModelAndView("/formular");
-    formular.addObject("form",new RegistraceForm());
-    return formular;
-  }
-
-
-  @PostMapping("/rekapitulace")
-  public Object form(@Valid @ModelAttribute("form") RegistraceForm form, BindingResult bindingResult) {
-
-    if (bindingResult.hasErrors()) {
-      return "/formular";
-    } else if (form.getVek() < 9 || form.getVek() > 15) {
-      return "validaceVeku";
+    @GetMapping("/")
+    public ModelAndView form() {
+        ModelAndView formular = new ModelAndView("/formular");
+        formular.addObject("form", new RegistraceForm());
+        return formular;
     }
 
-    return new ModelAndView("rekapitulace");
-  }
+
+    @PostMapping("/")
+    public Object form(@Valid @ModelAttribute("form") RegistraceForm form, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "/formular";
+        } else if (form.getVek() < 9 || form.getVek() > 15) {
+            return "validaceVeku";
+        }
+        return new ModelAndView("rekapitulace");
+
+
+    }
 }
