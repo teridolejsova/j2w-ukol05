@@ -21,6 +21,7 @@ public class RegistraceController {
     public ModelAndView form() {
         ModelAndView formular = new ModelAndView("/formular");
         formular.addObject("form", new RegistraceForm());
+        formular.addObject("rekapitulace",false);
         return formular;
     }
 
@@ -29,11 +30,14 @@ public class RegistraceController {
     public Object form(@Valid @ModelAttribute("form") RegistraceForm form, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/formular";
+            return new ModelAndView("formular")
+                    .addObject("rekapitulace",false);
         } else if (form.getVek() < 9 || form.getVek() > 15) {
             return "validaceVeku";
         }
-        return new ModelAndView("rekapitulace");
+        return new ModelAndView("formular")
+                .addObject("rekapitulace",true);
+
 
 
     }
